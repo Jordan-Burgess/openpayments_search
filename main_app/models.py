@@ -1,8 +1,8 @@
 from django.db import models
 
 class Payment(models.Model):
-    doctor_profile_id = models.IntegerField()
-    doctor_npi = models.IntegerField()
+    doctor_profile_id = models.BigIntegerField()
+    doctor_npi = models.BigIntegerField()
     doctor_first_name = models.CharField(max_length=50)
     doctor_middle_name = models.CharField(max_length=50)
     doctor_last_name = models.CharField(max_length=50)
@@ -16,7 +16,7 @@ class Payment(models.Model):
     doctor_specialty = models.CharField()
     doctor_license_state_code = models.CharField(max_length=2)
     submitting_manufacturer_name = models.CharField()
-    submitting_manufacturer_id = models.IntegerField()
+    submitting_manufacturer_id = models.BigIntegerField()
     submitting_manufacturer_state = models.CharField(max_length=2)
     submitting_manufacturer_country = models.CharField(max_length=50)
     payment_amount = models.DecimalField(max_digits=10, decimal_places=2)
