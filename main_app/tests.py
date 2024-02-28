@@ -1,8 +1,12 @@
 from django.test import TestCase
+from django.core.management import call_command
 from .models import Payment
 from datetime import date
+from unittest import mock
+from .mock_data import data
 
 class PaymentTest(TestCase):
+    # Test for successful creation of Payment document in database
     def setUp(self):
         Payment.objects.create(
             doctor_profile_id = 1234567,
@@ -43,3 +47,16 @@ class PaymentTest(TestCase):
         self.assertEqual(record.payment_date, date.today())
         self.assertEqual(record.payment_type, "Education")
         self.assertEqual(record.program_year, 2022)
+
+@mock.patch('main_app.management.commands.import_payments.requests.get')
+class ImportOpenPaymentCommandTest(TestCase):
+    # Test for import open database command
+    def test_command_output(self, mock_get):
+        mock_data = data
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.json.return_value = mock_data
+
+        call_command('import_payments')
+
+        self.assertEqual(Payment.objects.count(), 3)
+        self.assertTrue(Payment.objects.filter(doctor_first_name="JUSTIN").exists())
