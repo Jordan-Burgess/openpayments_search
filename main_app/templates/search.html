@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenPayments Search</title>
+</head>
+<body>
+    <input type="text" id="search" placeholder="Search ...">
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('search').addEventListener('input', function() {
+            const query = this.value
+            if(query.length > 2){
+                fetch(`/api/search/?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultsElem = document.getElementById('results')
+                    resultsElem.innerHTML = ''
+                    data.forEach(item => {
+                        const divElem = document.createElement('div')
+                        divElem.textContent = `${item.doctor_first_name} | ${item.doctor_middle_name} | ${item.doctor_last_name} | ${item.payment_type}`
+                        resultsElem.appendChild(divElem)
+                    })
+                })
+            }
+        })
+    </script>
+</body>
+</html>
