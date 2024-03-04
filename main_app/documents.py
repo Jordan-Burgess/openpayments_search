@@ -18,4 +18,5 @@ class PaymentDocument(Document):
             'doctor_middle_name',
             'doctor_last_name',
             'payment_type',
+            'payment_amount'
         ]
