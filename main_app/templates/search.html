@@ -17,7 +17,7 @@
     <script>
         document.getElementById('search').addEventListener('input', function() {
             const query = this.value
-            if(query.length > 2){
+            if(query.length > 1){
                 fetch(`/api/search/?q=${encodeURIComponent(query)}`)
                 .then(response => response.json())
                 .then(data => {
