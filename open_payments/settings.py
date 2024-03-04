@@ -90,7 +90,8 @@ elastic_search_url = urlparse(os.getenv('BONSAI_URL'))
 
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': [{'host': elastic_search_url.hostname, 'port': 443, 'use_ssl': True}]
+        'hosts': [{'host': elastic_search_url.hostname, 'port': 443, 'use_ssl': True}],
+        'http_auth': (elastic_search_url.username, elastic_search_url.password) if elastic_search_url.username else None
     }
 }
 
