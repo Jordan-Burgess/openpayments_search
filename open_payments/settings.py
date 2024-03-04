@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'open_payments.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'openpayments',
+        'NAME': os.getenv('DATABASE_URL'),
     }
 }
 
