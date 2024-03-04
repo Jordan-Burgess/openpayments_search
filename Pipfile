@@ -8,6 +8,7 @@ django = "*"
 psycopg2-binary = "*"
 python-dotenv = "*"
 django-elasticsearch-dsl = "*"
+django-heroku = "*"
 
 [dev-packages]
 
