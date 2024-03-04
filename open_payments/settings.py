@@ -90,7 +90,11 @@ elastic_search_url = urlparse(os.getenv('BONSAI_URL'))
 
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': os.getenv('ELASTICSEARCH_HOST')
+        'hosts': os.getenv('ELASTICSEARCH_HOST'),
+        'http_auth': (
+            os.getenv('ELASTICSEARCH_USERNAME'),
+            os.getenv('ELASTICSEARCH_PASSWORD')
+        )
     }
 }
 
