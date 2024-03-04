@@ -11,6 +11,7 @@ django-elasticsearch-dsl = "*"
 django-heroku = "*"
 gunicorn = "*"
 whitenoise = "*"
+requests = "*"
 
 [dev-packages]
 
