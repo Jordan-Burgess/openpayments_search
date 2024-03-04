@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+from urllib.parse import urlparse
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -85,9 +86,11 @@ DATABASES = {
     }
 }
 
+elastic_search_url = urlparse(os.getenv('BONSAI_URL'))
+
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': os.getenv('ELASTICSEARCH_HOST')
+        'hosts': [{'host': elastic_search_url.hostname, 'port': 443, 'use_ssl': True}]
     }
 }
 
