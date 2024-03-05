@@ -15,13 +15,7 @@
     <a href="#" id="excel">Export to Excel</a>
 
     <table id="results">
-        <tr>
-            <th>Doctor's First Name</th>
-            <th>Doctor's Middle Name</th>
-            <th>Doctor's Last Name</th>
-            <th>Payment Amount</th>
-            <th>Payment Type</th>
-        </tr>
+        
     </table>
 
     <script>
@@ -32,7 +26,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const resultsElem = document.getElementById('results')
-                    resultsElem.innerHTML = ''
+                    resultsElem.innerHTML = "<tr><th>Doctor's First Name</th><th>Doctor's Middle Name</th><th>Doctor's Last Name</th><th>Payment Amount</th><th>Payment Type</th></tr>"
                     data.forEach(item => {
                         const tableRowElem = document.createElement('tr')
                         tableRowElem.innerHTML = `<td>${item.doctor_first_name}</td><td>${item.doctor_middle_name}</td><td>${item.doctor_last_name}</td><td>$${item.payment_amount}</td><td>${item.payment_type}</td>`
