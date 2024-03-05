@@ -23,12 +23,13 @@
                 fetch(`/api/search/?q=${encodeURIComponent(query)}`)
                 .then(response => response.json())
                 .then(data => {
+                    const messageElem = document.createElement('p')
                     if(data.length == 0){
-                        const messageElem = document.createElement('p')
                         const bodyElem = document.querySelector('body')
                         messageElem.innerText = 'No Search Results'
                         bodyElem.appendChild(messageElem)
                     }
+                    messageElem.innerText = ''
                     const resultsElem = document.getElementById('results')
                     resultsElem.innerHTML = "<tr><th>Doctor's First Name</th><th>Doctor's Middle Name</th><th>Doctor's Last Name</th><th>Payment Amount</th><th>Payment Type</th></tr>"
                     data.forEach(item => {
