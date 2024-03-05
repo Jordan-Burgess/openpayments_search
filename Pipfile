@@ -12,6 +12,8 @@ django-heroku = "*"
 gunicorn = "*"
 whitenoise = "*"
 requests = "*"
+pandas = "*"
+openpyxl = "*"
 
 [dev-packages]
 
