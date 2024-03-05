@@ -19,3 +19,14 @@ input {
     padding: 0 15px;
     margin: 20px;
 }
+table {
+    border-collapse: collapse;
+    width: 100%
+}
+
+td, th {
+    border: 1px solid #ddd;
+}
+tr:nth-child(even){
+    background-color: #ddd;
+}
