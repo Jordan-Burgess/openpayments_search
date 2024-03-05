@@ -14,9 +14,28 @@ class PaymentDocument(Document):
     class Django:
         model = Payment
         fields = [
+            'doctor_profile_id',
+            'doctor_npi',
             'doctor_first_name',
             'doctor_middle_name',
             'doctor_last_name',
+            'doctor_primary_address_line1',
+            'doctor_primary_address_line2',
+            'doctor_city',
+            'doctor_state',
+            'doctor_zip_code',
+            'doctor_country',
             'payment_type',
-            'payment_amount'
+            'payment_amount',
+            'payment_date',
+            'payment_quantity',
+            'doctor_primary_type',
+            'doctor_specialty',
+            'doctor_license_state_code',
+            'submitting_manufacturer_name',
+            'submitting_manufacturer_id',
+            'submitting_manufacturer_state',
+            'submitting_manufacturer_country',
+            'program_year',
+            'publication_date',
         ]

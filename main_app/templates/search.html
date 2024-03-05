@@ -31,10 +31,10 @@
                     }
                     messageElem.innerText = ''
                     const resultsElem = document.getElementById('results')
-                    resultsElem.innerHTML = "<tr><th>Doctor's First Name</th><th>Doctor's Middle Name</th><th>Doctor's Last Name</th><th>Payment Amount</th><th>Payment Type</th></tr>"
+                    resultsElem.innerHTML = "<tr><th>Doctor's NPI</th><th>Doctor's First Name</th><th>Doctor's Middle Name</th><th>Doctor's Last Name</th><th>Payment Amount</th><th>Payment Type</th></tr>"
                     data.forEach(item => {
                         const tableRowElem = document.createElement('tr')
-                        tableRowElem.innerHTML = `<td>${item.doctor_first_name}</td><td>${item.doctor_middle_name}</td><td>${item.doctor_last_name}</td><td>$${item.payment_amount}</td><td>${item.payment_type}</td>`
+                        tableRowElem.innerHTML = `<td>${item.doctor_npi}</td><td>${item.doctor_first_name}</td><td>${item.doctor_middle_name}</td><td>${item.doctor_last_name}</td><td>$${item.payment_amount}</td><td>${item.payment_type}</td>`
                         resultsElem.appendChild(tableRowElem)
                     })
                 })
