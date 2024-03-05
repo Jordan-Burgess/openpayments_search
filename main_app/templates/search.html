@@ -13,7 +13,16 @@
     </header>
     <input type="text" id="search" placeholder="Search ...">
     <a href="#" id="excel">Export to Excel</a>
-    <div id="results"></div>
+
+    <table id="results">
+        <tr>
+            <th>Doctor's First Name</th>
+            <th>Doctor's Middle Name</th>
+            <th>Doctor's Last Name</th>
+            <th>Payment Amount</th>
+            <th>Payment Type</th>
+        </tr>
+    </table>
 
     <script>
         document.getElementById('search').addEventListener('input', function() {
@@ -25,9 +34,9 @@
                     const resultsElem = document.getElementById('results')
                     resultsElem.innerHTML = ''
                     data.forEach(item => {
-                        const divElem = document.createElement('div')
-                        divElem.textContent = `${item.doctor_first_name} | ${item.doctor_middle_name} | ${item.doctor_last_name} | $${item.payment_amount} | ${item.payment_type}`
-                        resultsElem.appendChild(divElem)
+                        const tableRowElem = document.createElement('tr')
+                        tableRowElem.innerHTML = `<td>${item.doctor_first_name}</td><td>${item.doctor_middle_name}</td><td>${item.doctor_last_name}</td><td>$${item.payment_amount}</td><td>${item.payment_type}</td>`
+                        resultsElem.appendChild(tableRowElem)
                     })
                 })
             }
