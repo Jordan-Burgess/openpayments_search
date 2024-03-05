@@ -11,10 +11,12 @@
         <h1>Open Payments Search</h1>
         <p>Search for payments paid to doctors in the most recent year.</p>
     </header>
-    <input type="text" id="search" placeholder="Search ...">
+    <input type="text" id="search" placeholder="Start Searching a doctor ...">
     <a href="#" id="excel">Export to Excel</a>
 
-    <table id="results"></table>
+    <div style="overflow-x:auto;">
+        <table id="results"></table>
+    </div>
 
     <script>
         document.getElementById('search').addEventListener('input', function() {
@@ -31,10 +33,10 @@
                     }
                     messageElem.innerText = ''
                     const resultsElem = document.getElementById('results')
-                    resultsElem.innerHTML = "<tr><th>Doctor's NPI</th><th>Doctor's First Name</th><th>Doctor's Middle Name</th><th>Doctor's Last Name</th><th>Payment Amount</th><th>Payment Type</th></tr>"
+                    resultsElem.innerHTML = "<tr><th>Doctor's NPI</th><th>Doctor's First Name</th><th>Doctor's Middle Name</th><th>Doctor's Last Name</th><th>Payment Amount</th><th>Payment Date</th><th>Payment Type</th><th>Payment Quantity</th><th>Submitting Manufacturer's Name</th></tr>"
                     data.forEach(item => {
                         const tableRowElem = document.createElement('tr')
-                        tableRowElem.innerHTML = `<td>${item.doctor_npi}</td><td>${item.doctor_first_name}</td><td>${item.doctor_middle_name}</td><td>${item.doctor_last_name}</td><td>$${item.payment_amount}</td><td>${item.payment_type}</td>`
+                        tableRowElem.innerHTML = `<td>${item.doctor_npi}</td><td>${item.doctor_first_name}</td><td>${item.doctor_middle_name}</td><td>${item.doctor_last_name}</td><td>$${item.payment_amount}</td><td>${item.payment_date}</td><td>${item.payment_type}</td><td>${item.payment_quantity}</td><td>${item.submitting_manufacturer_name}</td>`
                         resultsElem.appendChild(tableRowElem)
                     })
                 })
