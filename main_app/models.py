@@ -1,6 +1,7 @@
 from django.db import models
 
 class Payment(models.Model):
+    identifier = models.BigIntegerField()
     doctor_profile_id = models.BigIntegerField()
     doctor_npi = models.BigIntegerField()
     doctor_first_name = models.CharField(max_length=50)
