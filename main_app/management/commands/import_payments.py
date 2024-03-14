@@ -47,3 +47,30 @@ class Command(BaseCommand):
 
         else:
             self.stdout.write(self.style.ERROR("Failed to fetch dataset from Open Payments Dataset"))
+
+    def get_most_recent_dataset_metadata(self):
+        api_url = 'https://openpaymentsdata.cms.gov/api/1/metastore/schemas/dataset/items'
+
+        response = requests.get(api_url)
+        if response.status_code == 200:
+            data = response.json()
+            general_datasets = []
+
+            for ds in data:
+                if "General Payments" in ds.get('theme'):
+                    general_datasets.append(ds)
+            
+            sorted_ds = sorted(general_datasets, key=lambda x: x.get('keyword')[0], reverse=True)
+            if sorted_ds:
+                most_recent_dataset = sorted_ds[0]
+                year = most_recent_dataset.get('keyword')[0]
+                return {
+                    'year': year,
+                    'identifier': most_recent_dataset.get('identifier'),
+                    'modified': most_recent_dataset.get('modified')
+                }
+            
+            return None
+        
+        else:
+            return None
