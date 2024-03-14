@@ -25,3 +25,7 @@ After you will need to index the data into the elasticsearch client instance for
 ```
 python manage.py search_index --rebuild
 ```
+
+The `import_payments` command is made to check the `modified` field on the metastore data from the OpenPayments API. If there is a more current date available, then data will be updated based on the `change_type` field of each record. 
+
+On a deployed app, such as one hosted on Heroku. The `import_payments` command can be set to run daily and check for any updates.
