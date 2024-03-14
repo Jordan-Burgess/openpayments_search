@@ -169,9 +169,10 @@ class Command(BaseCommand):
             if new_year or not metadata:
                 self.clear_database()
                 action = 'full_import'
+                self.stdout.write(self.style.SUCCESS("New Year Data found. Beginning to import new data."))
             elif modified_changed:
                 action = 'update_import'
-
+                self.stdout.write(self.style.SUCCESS("Updates found. Beginning to import new data."))
             else:
                 action = 'skip'
 
