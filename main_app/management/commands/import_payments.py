@@ -1,14 +1,19 @@
 from django.core.management.base import BaseCommand
 import requests
-from main_app.models import Payment
+from main_app.models import Payment, MetaData
 from datetime import datetime
 
 class Command(BaseCommand):
     help = "Imports most recent year data from OpenPayments API"
 
     def handle(self, *args, **options):
-        api_url = 'https://openpaymentsdata.cms.gov/api/1/datastore/query/df01c2f8-dc1f-4e79-96cb-8208beaf143c/0?limit=50'
+        dataset_metadata = self.get_most_recent_dataset_metadata()
+        identifier = dataset_metadata['identifier']
+        api_url = f'https://openpaymentsdata.cms.gov/api/1/datastore/query/{identifier}/0'
 
+        # if dataset_metadata['year']
+
+        
         response = requests.get(api_url)
         if response.status_code == 200:
             data = response.json()

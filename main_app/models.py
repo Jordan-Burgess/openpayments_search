@@ -30,3 +30,4 @@ class MetaData(models.Model):
     recent_year = models.IntegerField(default=2022)
     identifier = models.CharField()
     modified = models.DateField()
+    name = models.CharField(default='Main')
