@@ -15,7 +15,12 @@ class Command(BaseCommand):
         if action == 'full_import':
             self.full_import(api_url)
         elif action == 'update_import':
-            self.update_import(api_url)
+            try:
+                self.update_import(api_url)
+                self.stdout.write(self.style.SUCCESS("Dataset is updated"))
+            except:
+                self.stdout.write(self.style.ERROR("Dataset failed to update with the new dataset"))
+
         elif action == 'skip':
             self.stdout.write(self.style.SUCCESS("No new updates found. Dataset is up-to-date."))
 
@@ -166,6 +171,7 @@ class Command(BaseCommand):
                 action = 'full_import'
             elif modified_changed:
                 action = 'update_import'
+
             else:
                 action = 'skip'
 
