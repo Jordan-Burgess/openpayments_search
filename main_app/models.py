@@ -26,4 +26,7 @@ class Payment(models.Model):
     program_year = models.IntegerField()
     publication_date = models.DateField()   
 
-
+class MetaData(models.Model):
+    recent_year = models.IntegerField(default=2022)
+    identifier = models.CharField()
+    modified = models.DateField()
