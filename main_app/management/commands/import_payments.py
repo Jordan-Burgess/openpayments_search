@@ -49,6 +49,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR("Failed to fetch dataset from Open Payments Dataset"))
 
     def get_most_recent_dataset_metadata(self):
+        # Returns the dataset identifier and year of the most recent General Payments publication
         api_url = 'https://openpaymentsdata.cms.gov/api/1/metastore/schemas/dataset/items'
 
         response = requests.get(api_url)
